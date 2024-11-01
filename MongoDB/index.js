@@ -1,8 +1,6 @@
 const express = require("express");
 const app = express();
-// const mongoose = require("mongoose");
 const connectMongoDB = require("./mongoConnectDB");
-const Person = require("./models/PersonModel");
 const PersonRoutes = require("./routes/PersonRoutes");
 require("dotenv").config()
 
