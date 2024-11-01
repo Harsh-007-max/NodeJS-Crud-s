@@ -14,6 +14,15 @@ In scripts section add new entry under "test" command
 npm start
 ```
 
+# In mongoConnectDB.js add following
+```js
+const mongoose = require("mongoose");
+const connectMongoDB = url => {
+  return mongoose.connect(url);
+}
+module.exports = connectMongoDB;
+```
+
 # In index.js write the following code
 ```js
 const express = require("express");
@@ -35,13 +44,13 @@ app.use(PersonRoutes);
 app.listen(PORT,function(){console.log(`Listning on port ${PORT}`)})
 ```
 
-
 # create a router
 ```js
 const express = require("express");
 const PersonModel = require("../models/PersonModel");
 const router = express.Router();
 ```
+
 ## get all persons
 ```js
 const getAllPerson = async (req, res) => {
@@ -50,7 +59,6 @@ const getAllPerson = async (req, res) => {
   res.status(200).send(Persons);
 }
 ```
-
 ### get all persons
 ![get_all_persons](https://github.com/Harsh-007-max/NodeJS-Crud-s/blob/main/MongoDB/images/getall_persons.png)
 
@@ -66,7 +74,6 @@ const getByPersonID = async (req, res) => {
     res.status(500).send("Insertnal Server Error");
   }}
 ```
-
 ### get by PersonID
 ![get_by_personid](https://github.com/user-attachments/assets/002eb12d-b643-4cab-9062-f39ac47a05d9)
 
@@ -85,7 +92,6 @@ const addNewPerson = async (req, res) => {
   res.status(200).send(NewPerson);
 }
 ```
-
 ### add new person
 ![add_new_person](https://github.com/user-attachments/assets/162f5a4d-aa41-436e-917b-5cf9e9c2967a)
 
@@ -103,7 +109,6 @@ const updatePerson = async (req, res) => {
   res.status(200).send(UpdatedPerson);
 }
 ```
-
 ### update by PersonID
 ![update_by_personid](https://github.com/user-attachments/assets/686fbb9a-abb7-4d93-a236-e68866e899bd)
 
@@ -116,7 +121,6 @@ const deleteByPersonID = async (req, res) => {
   res.status(200).send(response);
 }
 ```
-
 ### delete by PersonID
 ![delete_by_personid](https://github.com/user-attachments/assets/3551947d-33dd-42e0-acff-42d7ce66ea45)
 
