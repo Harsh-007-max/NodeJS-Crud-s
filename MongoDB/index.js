@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const connectMongoDB = require("./mongoConnectDB");
 const PersonRoutes = require("./routes/PersonRoutes");
+const cors = require("cors");
 require("dotenv").config()
 
 const PORT = process.env.PORT || 8000;
@@ -9,7 +10,7 @@ const PORT = process.env.PORT || 8000;
 const connectionString = process.env.DB_URL;
 
 connectMongoDB(connectionString).then(console.log("Connected to mongodb")).catch(err=>console.error(`error ${err}`))
-
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 app.use(PersonRoutes);
